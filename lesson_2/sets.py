@@ -1,6 +1,6 @@
-# numbers_1 = {1, 2, 3, 4, 5, 6}
-# numbers_2 = {5, 6, 7, 4}
-# numbers_3 = {9, 4, 5}
+numbers_1 = {1, 2, 3, 4}
+# numbers_2 = {3, 1, 2}
+numbers_3 = {3, 4, 5, 6, 7}
 
 # print(numbers_1.union(numbers_2))
 # print(numbers_1.difference(numbers_2))
@@ -9,3 +9,5 @@
 
 # print(numbers_1 | numbers_2)
 # print(numbers_1 & numbers_2)
+
+print(numbers_1.symmetric_difference(numbers_3))
