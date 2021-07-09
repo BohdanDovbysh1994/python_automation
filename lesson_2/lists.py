@@ -56,5 +56,3 @@
 #
 #
 # print(numbers_1 + numbers_2)
-
-
