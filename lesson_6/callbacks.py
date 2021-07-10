@@ -9,7 +9,7 @@ def custom_difference(a: int, b: int) -> int:
     return a - b
 
 
-def do_action(callback: Callable, a: int, b: int):
+def do_action(callback: Callable[[int, int], int], a: int, b: int):
     return callback(a, b)
 
 
