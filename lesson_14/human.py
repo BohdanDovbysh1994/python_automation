@@ -8,6 +8,11 @@ class Human:
 
     def __str__(self):
         result = ""
+        print(self.__class__.__dict__)
         for key, value in self.__dict__.items():
-            result += f"{self.__clean(key)}: {value}\n\t"
+            result += f"{key}: {value}\n\t"
         return f"{{\n\t{result}}}"
+
+
+if __name__ == '__main__':
+    print(Human("john", 32))

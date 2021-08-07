@@ -1,0 +1,14 @@
+@startuml
+class Human{
+    -name: str
+    -age: int
+    -action: Action
+    +action() -> Action
+}
+class Action{
+    -name: str
+    +name() -> str
+}
+
+Human *-- Action
+@enduml
