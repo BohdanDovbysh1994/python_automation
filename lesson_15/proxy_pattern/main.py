@@ -1,10 +1,11 @@
-from lesson_15.proxy_pattern.csv_proxy_reader import CsvProxyReaderWriter
-from lesson_15.proxy_pattern.csv_reader import CsvReaderWriter
+from lesson_15.proxy_pattern.proxy_csv_manager import ProxyCsvManager
+from lesson_15.proxy_pattern.csv_manager import CsvManager
 
-csv_reader = CsvReaderWriter("users.csv")
-reader = CsvProxyReaderWriter(csv_reader)
+
+csv_reader = CsvManager("users.csv")
+reader = ProxyCsvManager(csv_reader)
 
 print(reader.read())
 print(reader.read())
-reader.write("Amanda,Stuart,56,Female,700")
+reader.write("\nAmanda,Stuart,56,Female,700")
 print(reader.read())

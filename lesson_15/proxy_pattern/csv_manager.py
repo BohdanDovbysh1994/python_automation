@@ -1,8 +1,8 @@
-from lesson_15.proxy_pattern.reader import Reader
-from lesson_15.proxy_pattern.writer import Writer
+from lesson_15.proxy_pattern.ireader import IReader
+from lesson_15.proxy_pattern.iwriter import IWriter
 
 
-class CsvReaderWriter(Reader, Writer):
+class CsvManager(IReader, IWriter):
     def __init__(self, file_name: str):
         self.__file_name = file_name
 
@@ -12,5 +12,5 @@ class CsvReaderWriter(Reader, Writer):
         return text
 
     def write(self, text: str):
-        with open(self.__file_name, "w") as file:
+        with open(self.__file_name, "a") as file:
             file.write(text)

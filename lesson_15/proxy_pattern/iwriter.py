@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class Writer(ABC):
+class IWriter(ABC):
     @abstractmethod
     def write(self, text: str):
         pass
