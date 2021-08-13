@@ -10,5 +10,5 @@ class Action{
     +name() -> str
 }
 
-Human *-- Action
+Human *--> Action
 @enduml

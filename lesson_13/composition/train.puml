@@ -1,0 +1,14 @@
+@startuml
+class Train{
+    -__train_cars
+    +___str__()
+    +add_train_car()
+}
+
+class TrainCar{
+    -__number
+    +number()
+}
+
+Train *--> TrainCar
+@enduml
