@@ -1,6 +1,6 @@
 import pytest
 
-from lesson_16.code_for_testing import Human
+from lesson_16.human import Human
 
 
 class TestHuman:
