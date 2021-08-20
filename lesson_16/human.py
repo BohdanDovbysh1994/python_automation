@@ -22,7 +22,11 @@ class Human:
     def change_gender(self, gender: str):
         self.__is_alive()
         self.__validate_gender(gender)
-        self.__gender = gender
+
+        if self.__gender != gender:
+            self.__gender = gender
+        else:
+            raise Exception(f"{self.__name} already has gender '{gender}'")
 
     @staticmethod
     def __validate_gender(gender: str):
