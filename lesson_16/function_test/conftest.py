@@ -1,13 +1,8 @@
 import pytest
 
-from lesson_16.human import Human, Action
+from lesson_16.human import Human
 
 
 @pytest.fixture
-def action() -> Action:
-    yield Action("dancing")
-
-
-@pytest.fixture
-def human(action) -> Human:
-    yield Human("John", 32, "male", action)
+def human() -> Human:
+    yield Human("John", 32, "male")
