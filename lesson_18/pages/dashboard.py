@@ -8,11 +8,12 @@ from ..core.page_singleton import singleton
 from .base_page import BasePage
 
 
-# @singleton
+@singleton
 class Dashboard(BasePage):
     def __init__(self, driver: WebDriver):
         super().__init__(driver)
         self.__galery_locator = (By.XPATH, "//*[@id='gallerywide']")
+        self.__auto_subcategory_locator = (By.XPATH, "//div[@id='bottom1532']")
 
     def choose_category(self, name: str) -> None:
         time.sleep((2))
@@ -24,3 +25,7 @@ class Dashboard(BasePage):
 
     def wait_for_galery(self):
         return self._wait_until_element_appears(self.__galery_locator)
+
+    def is_subcategories_displayed(self):
+        element = self._wait_until_element_appears(self.__auto_subcategory_locator)
+        return element.get_attribute("style") == ""
