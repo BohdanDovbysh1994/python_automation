@@ -31,7 +31,8 @@ class Movie:
             for decade in category:
                 for movie in decade:
                     cls(
-                        movie.attrib["title"])
+                        movie.attrib["title"]
+                    )
 
 if __name__ == '__main__':
     movies = Movie.from_xml("market.xml")
