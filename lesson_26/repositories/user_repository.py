@@ -40,8 +40,11 @@ class UserRepository:
         User.select(lambda user: user.id == id).delete()
 
     @db_session
-    def update_one_by_id(self, id: str, data: dict):
-        User.select(lambda user: user.id == id)
+    def update_one_by_id_dict_interface(self, id: str, data: dict):
+        # Pony support only single update operation for now
+        # Pony will add bulk update in future throw Query and update function
+
+        User[id].set(**data)
 
 
 if __name__ == '__main__':
@@ -57,3 +60,5 @@ if __name__ == '__main__':
     # )
     # user_repository.delete_one_by_id("gggggg")
     # user_repository.delete_one_by_id_with_query_method("uuuuuuuu")
+    # user_repository.update_one_by_id("bbbbbbbb", {"name": "Mery"})
+    user_repository.update_one_by_id_query_interface("bbbbbbbb", {"name": "Anry"})
