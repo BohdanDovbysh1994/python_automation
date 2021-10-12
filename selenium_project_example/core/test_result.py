@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import uuid
 from datetime import datetime
 from typing import List
 
@@ -11,15 +12,17 @@ from .enums.test_type import TestType
 class TestResult:
     def __init__(
         self,
+        id: str,
         name: str,
         result: str,
         date_created: datetime,
-        type: TestType,
+        type: str,
         duration: float,
         log: str,
         std_error: str,
-        std_out
+        std_out: str,
     ):
+        self.id = id
         self.name = name
         self.result = result
         self.date_created = date_created
@@ -30,7 +33,7 @@ class TestResult:
         self.std_out = std_out
 
     @classmethod
-    def from_test_reports(cls, results: List[TestReport], test_type: TestType) -> List[TestResult]:
+    def from_test_reports(cls, results: List[TestReport], test_type: str) -> List[TestResult]:
         test_reports = []
         for result in results:
             test_reports.append(cls.from_test_report(result, test_type))
@@ -38,8 +41,9 @@ class TestResult:
         return test_reports
 
     @classmethod
-    def from_test_report(cls, result: TestReport, test_type: TestType) -> TestResult:
+    def from_test_report(cls, result: TestReport, test_type: str) -> TestResult:
         return cls(
+            id=str(uuid.uuid4()),
             name=result.head_line,
             result=result.outcome,
             date_created=datetime.now(),

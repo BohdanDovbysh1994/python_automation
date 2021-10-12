@@ -2,7 +2,8 @@ import pytest
 
 from selenium.webdriver import Chrome
 
-from .core.enums.test_type import TestType
+from .core.infrastructure.repositories.test_result_repository import \
+    TestResultRepository
 from .core.test_result import TestResult
 from .pages.dashboard_page.dashboard_page import DashboardPage
 
@@ -11,11 +12,16 @@ results = list()
 
 
 @pytest.fixture(scope="session")
-def driver(request):
-    driver = Chrome("./infrastructure/drivers/chromedriver")
+def test_result_repository():
+    yield TestResultRepository()
+
+
+@pytest.fixture(scope="session")
+def driver(request, test_result_repository):
+    driver = Chrome("core/infrastructure/drivers/chromedriver")
     yield driver
-    # TODO: implement persistence storage layer for storing reports in DB (PostgreSQL, MongoDB)
-    reports = TestResult.from_test_reports(results, TestType.UI)
+    reports = TestResult.from_test_reports(results, "UI")
+    test_result_repository.save(reports)
     driver.quit()
 
 
