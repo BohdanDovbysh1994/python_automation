@@ -17,6 +17,10 @@ class UsersRepository:
         self.__session.add(user)
         self.__session.commit()
 
+    def delete_one_by_email(self, email: str):
+        self.__session.delete(Users).where(User.email == email)
+        self.__session.commit()
+
     def get_one_by_email(self, email: str):
         print(self.__session.query(Users).filter_by(email=email).first())
 
